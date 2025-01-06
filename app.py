@@ -3,7 +3,7 @@ from markupsafe import Markup
 import traceback
 from youtube import YouTubeAPI
 from dataclass.publication import Publication
-from dataclass.detector import YoutubeSponsorshipDetector
+from agents.detector.detector import YoutubeSponsorshipDetector
 
 app = Flask(__name__)
 
@@ -11,9 +11,9 @@ youtube_api = YouTubeAPI()
 
 @app.route('/')
 def home():
-    YoutubeSponsorshipDetector().crew().kickoff(inputs={
-        "description": "@nala.money - sure update for FX transfer this period and beyond. Download @nala.money app with my code SABINUS. use to send love home and get the “investor”.",
-    })
+    # YoutubeSponsorshipDetector().crew().kickoff(inputs={
+    #     "description": "@nala.money - sure update for FX transfer this period and beyond. Download @nala.money app with my code SABINUS. use to send love home and get the “investor”.",
+    # })
     return "Hello, Flask!"
 
 @app.route('/channels', methods=['GET'])
