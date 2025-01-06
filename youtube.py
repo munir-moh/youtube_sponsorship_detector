@@ -1,25 +1,21 @@
+import os
 import requests
+from dotenv import load_dotenv
 
-API_KEY = "AIzaSyDRwxYpoHkaYyHuePOsajLUrCHe-OVJs9M" 
+load_dotenv()
 
-# url = "https://www.googleapis.com/youtube/v3/videos"
-# params = {
-#     "part" : "snippet",
-#     "id" : "3w3uuvkEakY",
-#     # "maxResults" : 25,
-#     "key" : API_KEY
-# }
+class YouTubeAPI:
+    def __init__(self):
+        self.api_key = os.getenv('YOUTUBE_API_KEY')
+        if not self.api_key:
+            raise ValueError("No API key found in environment variables")
 
-# r = requests.get(url, params=params)
-
-# print(r.json())
-
-def get_youtube_videos(publication_ids: str) -> dict:
-    url = "https://www.googleapis.com/youtube/v3/videos"
-    params = {
-        "part" : "snippet,statistics",
-        "id" : publication_ids,
-        "key" : API_KEY
-    }
-    r = requests.get(url, params=params)
-    return r.json()
+    def get_youtube_videos(self, publication_ids: str) -> dict:
+        url = "https://www.googleapis.com/youtube/v3/videos"
+        params = {
+            "part" : "snippet,statistics",
+            "id" : publication_ids,
+            "key" : self.api_key
+        }
+        r = requests.get(url, params=params)
+        return r.json()
