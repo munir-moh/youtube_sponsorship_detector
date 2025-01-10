@@ -23,4 +23,3 @@ class Publication(BaseModel):
             "description": None  
         }
         return cls(**publication_data)
-
