@@ -11,9 +11,6 @@ youtube_api = YouTubeAPI()
 
 @app.route('/')
 def home():
-    # YoutubeSponsorshipDetector().crew().kickoff(inputs={
-    #     "description": "@nala.money - sure update for FX transfer this period and beyond. Download @nala.money app with my code SABINUS. use to send love home and get the “investor”.",
-    # })
     return "Hello, Flask!"
 
 @app.route('/channels', methods=['GET'])
